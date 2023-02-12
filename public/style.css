@@ -1,0 +1,22 @@
+body {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background-color: #FFF;
+}
+.div-central{
+    width: 500px;
+    height: 500px;
+    border: 1px solid #83827D;
+    margin-top: 2%;
+    border-radius: 10px;
+    background-color: #83827D;
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-family: sans-serif;
+    flex-direction: column;
+}

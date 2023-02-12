@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js" integrity="sha512-9mpsATI0KClwt+xVZfbcf2lJ8IFBAwsubJ6mI3rtULwyM3fBmQFzj0It4tGqxLOGQwGfJdk/G+fANnxfq9/cew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>RFID Access</title>
+</head>
+<body>
+    <div class="div-central">
+        <h1>Acesso bloqueado, posicione sua tag para prosseguir</h1>
+        <img id="img-status" src="./img/yes.png" style="width:300px;">
+    </div>
+    
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script type="text/javascript">
+    var socket = io('http://localhost:5000/');
+    socket.on('access', function(data){
+        console.log(data)
+        if(data == true){
+            $("#img-status").attr("src", "./img/yes.png");
+            $(".div-central").css("background", "#83827D");
+            $(".div-central h1").text("Acesso Permitido")
+        }
+        if(data == false){
+            $("#img-status").attr("src", "./img/not.png");
+            $(".div-central").css("background", "black");
+            $(".div-central h1").text("Acesso Negado")
+        }
+      })
+</script>
+</body>
+</html>
